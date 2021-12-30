@@ -1,11 +1,19 @@
 "use strict";
-let user = "Mike";
-let user1 = "Alex";
-console.log("Mike");
-console.log(user1);
-console.log("28");
-console.log('sdf');
+// Первое домашнее задание
 
-let a = 1,
-    b = 2;
-console.log(a+b);
+const personalMovieBD =  {
+        count: +prompt("Сколько фильмов вы уже посмотрели ?", ""),
+        movies: {},
+        actors: [],
+        genres: [],
+        privat: false
+};
+
+const a = prompt("Один из последних просмотренных фильмов", "");
+const b = prompt("На сколько оцените его","");
+const c = prompt("Один из последних просмотренных фильмов", "");
+const d = prompt("На сколько оцените его","");
+
+personalMovieBD.movies[a]=b;
+personalMovieBD.movies[c]=d;
+console.log(personalMovieBD);
