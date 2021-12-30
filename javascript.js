@@ -5,3 +5,7 @@ console.log("Mike");
 console.log(user1);
 console.log("28");
 console.log('sdf');
+
+let a = 1,
+    b = 2;
+console.log(a+b);
