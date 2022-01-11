@@ -1,76 +1,39 @@
 "use strict";
-// Practice part 2. Apply conditions and cycles
+// Lesson number 16. Functions
+let num = 20;
+function showFistMessage(text){
+        console.log(text);
+        console.log(num);
+}
 
-/* Задание на урок:
-1) Автоматизировать вопросы пользователю про фильмы при помощи цикла
-2) Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
-отменить ответ или ввести название фильма длинее, чем 50 символов. Если это происходит - 
-возвращаем пользователя к вопросам опять. (К любой строке можно обратиться как 
-str.length - и получить её длину)
-3) При помощи условий проверить  personalMovieDB.count, и если он меньше 10 - вывести сообщение
-"Просмотрено довольно мало фильмов", если от 10 до 30 - "Вы классический зритель", а если больше - 
-"Вы киноман". А если не подошло ни к одному варианту - "Произошла ошибка"
-4) Потренироваться и переписать цикл еще двумя способами*/
+showFistMessage('Hello World!');
+console.log(num);
 
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+// console.log(calc(4,3));
+// console.log(calc(5,8));
+// console.log(calc(10,3));
+// console.log(calc(5,10));
 
-const personalMovieDB = {
-        count: numberOfFilms,
-        movies: {},
-        actors: {},
-        genres: [],
-        privat: false
+// function calc (a, b) {
+//         return (a + b); // окончание функции 
+// }
+// Function Declaration
+function ret () {
+        let num = 50;
+        return num;
+}
+const anotherNum = ret();
+console.log(anotherNum);
+
+// Function Expression
+const logger = function() {
+        console.log('Hello')
 };
+logger();
 
-if (personalMovieDB.count <= 10) {
-        console.log("Просмотрено довольно мало фильмов");
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
-        console.log("Вы классический зритель");
-} else if (personalMovieDB.count >= 30) {
-        console.log("Вы киноман");
-} else {
-        console.log("Произошла ошибка");
-}
-// Цикл через While
-/*let i = 0;
- while (i < 2){ 
-      
-         const a = prompt("Один из последних просмотренных фильмов", ""),
-                b = prompt("На сколько оцените его", "");
-        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-                personalMovieDB.movies[a] = b;
-                console.log('done');
-        } else {
-                console.log('error');
-                i--;
-        }
-         i++;
- }*/
-// Цикл через For
-for (let i = 0; i < 2; i++) {
-        const a = prompt("Один из последних просмотренных фильмов", ""),
-                b = prompt("На сколько оцените его", "");
-        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-                personalMovieDB.movies[a] = b;
-                console.log('done');
-        } else {
-                console.log('error');
-                i--;
-        }
-}
-// Цикл через do
-/*let i = 0;
-do {
-        const a = prompt("Один из последних просмотренных фильмов", ""),
-                b = prompt("На сколько оцените его", "");
-        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-                personalMovieDB.movies[a] = b;
-                console.log('done');
-        } else {
-                console.log('error');
-                i--;
-        }
-        i++;
-}
-while (i < 2);
-console.log(personalMovieDB);*/
+//Стрелочная функция
+
+const calc = (a, b) => { 
+        console.log('1');
+        return a + b;
+};
