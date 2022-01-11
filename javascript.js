@@ -1,39 +1,31 @@
 "use strict";
-// Lesson number 16. Functions
-let num = 20;
-function showFistMessage(text){
-        console.log(text);
-        console.log(num);
-}
+// Lesson number 17. Methods and properties of strings and numbers
 
-showFistMessage('Hello World!');
-console.log(num);
+const str = 'teSt';
+// console.log(str.toUpperCase());
+console.log(str.toLowerCase());
+console.log(str);
 
-// console.log(calc(4,3));
-// console.log(calc(5,8));
-// console.log(calc(10,3));
-// console.log(calc(5,10));
+let fruit = "Some fruit";
+console.log(fruit.indexOf('q')); // Если -1 то такой кусок стори небыл найден
+console.log(fruit.indexOf('fruit')); // выведет , что начинается с 5 символа 
 
-// function calc (a, b) {
-//         return (a + b); // окончание функции 
-// }
-// Function Declaration
-function ret () {
-        let num = 50;
-        return num;
-}
-const anotherNum = ret();
-console.log(anotherNum);
+const logg = 'Hello world';
+console.log(logg.slice(6,11)); // вырежет слово world
+console.log(logg.slice(-5)); // будет вырезать справа налево
+console.log(logg.slice(6)); // вырежет слово world
+console.log(logg.substring(6, 5)); // не подерживает отрицательное значение 
 
-// Function Expression
-const logger = function() {
-        console.log('Hello')
-};
-logger();
 
-//Стрелочная функция
+//Работа с Числами 
 
-const calc = (a, b) => { 
-        console.log('1');
-        return a + b;
-};
+const num = 12.2;
+console.log(Math.round(num)); // Окпугление числа
+
+
+const test = "12.2px";
+console.log(parseInt(test)); // Получает ответ 12 , также он стал числовым
+console.log(parseFloat(test)); // Получаем число 12.2 с плавающим значением 
+
+
+
