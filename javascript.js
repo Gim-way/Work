@@ -1,35 +1,34 @@
 "use strict";
-// Lesson 20. Objects, object destructuring (ES6)
+// Lesson 21. Arrays and pseudo-arrays
 
-const options = {
-  name: 'test',
-  width: 1024,
-  height: 1024,
-  colors: {
-    border:'black',
-    bg:'red'
-  },
-  age:28,
-  surname: 'Timashov',
-  makeTest: function(){
-    console.log("Test");
-  }
-};
-options.makeTest();
-const {border, bg} = options.colors; // деструктуризация объектов
-console.log(border);
-// console.log(options["colors"]["border"]);
-let counter = 0;
-for (let key in options){
-  if (typeof(options[key])==='object'){
-    for (let i in options[key]){
-      console.log(`Свойство ${i} имеет значение ${options[key][i]}`);
-    }
-  } else{
-  console.log(`Свойство ${key} имеет значение ${options[key]}`);
-  counter++;
-  }
+const arr = [0, 1, 2, 18, 6, 8, 10];
+arr.sort(compareNum);
+console.log(arr);
+
+function compareNum(a, b){
+  return a - b;
 }
-console.log(counter);
 
-console.log(Object.keys(options).length);
+// arr[99] = 0;
+// console.log(arr.length);
+// console.log(arr);
+
+ arr.forEach(function(item,i,arr){                         //break и continue здесь не сработают  
+  console.log(`${i}: ${item} внутри массива ${arr}`);
+ }) ;
+
+// arr.pop();
+arr.push(10);
+console.log(arr);
+ for (let i = 0; i < arr.length; i++){
+  console.log(arr[i]);
+}
+
+for (let value of arr){
+  console.log(value);
+}
+
+const str = prompt("","");
+const products = str.split(', ');
+products.sort();
+console.log(products.join('; '));
