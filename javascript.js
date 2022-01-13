@@ -118,4 +118,4 @@ const q = {
   two:2
 };
 
-const newq = {...q};
+const newq = {...q}; // ES9
