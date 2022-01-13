@@ -1,34 +1,121 @@
 "use strict";
-// Lesson 21. Arrays and pseudo-arrays
+// Lesson 22. Passing by reference or by value ES6- ES9
 
-const arr = [0, 1, 2, 18, 6, 8, 10];
-arr.sort(compareNum);
-console.log(arr);
 
-function compareNum(a, b){
-  return a - b;
+let a = 5,
+    b = a;
+
+b = b + 5;
+console.log(b);
+console.log(a);
+
+const obj = {
+  a:5,
+  b:1
+};
+
+// Передачи по ссылке
+
+// const copy = obj; // В переменную copy кладётся ссылка на объект obj 
+// copy.a = 10; // передача по ссылке
+// console.log(copy);
+// console.log(obj);
+
+// как создать копии объктов, массивов и т.д
+// Кланирования объекта
+function copy(mainObj){
+  let objCopy = {};
+  let key;
+  for (key in mainObj){
+    objCopy[key] = mainObj[key];
+  }
+
+  return objCopy;
 }
 
-// arr[99] = 0;
-// console.log(arr.length);
-// console.log(arr);
+const numbers = {
+    a:2,
+    b:5,
+    c:{
+      x:7,
+      y:4
+    }
+};
 
- arr.forEach(function(item,i,arr){                         //break и continue здесь не сработают  
-  console.log(`${i}: ${item} внутри массива ${arr}`);
- }) ;
+const newNumbers = copy(numbers); // Создали поверхностную копию объекта
 
-// arr.pop();
-arr.push(10);
-console.log(arr);
- for (let i = 0; i < arr.length; i++){
-  console.log(arr[i]);
+newNumbers.a = 10;
+newNumbers.c.x = 10;
+console.log(newNumbers);
+console.log(numbers);
+
+const add = {
+   d: 17,
+   e: 20 
+  };
+
+  console.log(Object.assign(numbers, add)); // Добавляем к объекту новый объект
+  const clone = (Object.assign({}, add));
+  clone.d = 25;
+  console.log(add);
+  console.log(clone);
+
+
+  const numbers1 = {
+    a:2,
+    b:5,
+    c:{
+      x:7,
+      y:4
+    }
+};
+
+const clone1 = (Object.assign({}, numbers1));
+clone1.a = 5;
+console.log(numbers1);
+console.log(clone1);
+
+
+// Создаём копию массива
+
+const oldArray = ['a', 'b', 'c'];
+const newArray = oldArray.slice();
+
+newArray[1] = 'ываиыавпып';
+console.log(newArray);
+console.log(oldArray);
+
+// Оператор разворот ES6 для массивов ES8 для объектов
+
+const video = ['youtube', 'vimeo', 'rutube'],
+      blogs = ['wordpress', 'livejournal', 'blogger'],
+      internet = [...video, ...blogs, 'vk', 'facebook'];  // оператор разворота 
+
+console.log(internet);
+
+function log(a, b, c){
+  console.log(a);
+  console.log(b);
+  console.log(c);
 }
 
-for (let value of arr){
-  console.log(value);
-}
+const num = [2, 5, 7,];
 
-const str = prompt("","");
-const products = str.split(', ');
-products.sort();
-console.log(products.join('; '));
+log(...num);
+
+// Spred оператор для массива
+
+const array = ['a' , 'b'];
+const clonArray = [...array]; // поверхностная копия 
+clonArray[0] = 'c';
+console.log(array);
+console.log(clonArray);
+
+// Spred оператор для объектов 
+
+const q = {
+  one:1,
+  two:2
+};
+
+const newq = {...q};
