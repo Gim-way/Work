@@ -30,13 +30,16 @@ const personalMovieDB = {
   rememberMyFilms: function (){
     for (let i = 0; i < 2; i++) {
       const a = prompt("Один из последних просмотренных фильмов", ""),
-        b = prompt("На сколько оцените его", "");
-      if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            b = prompt("На сколько оцените его", "");
+      if (a != null && b != null && a != '' && b != '' && a.length < 50 && !isNaN(b)) {
         personalMovieDB.movies[a] = b;
         console.log('done');
-      } else {
-        console.log('error');
-        i--;
+      } if (b != null && b !='' && !isNaN(b)) {
+        personalMovieDB.movies[a] = b;
+        console.log('done');
+      }else{
+         alert('Неравильно ввели данные');
+         i--;
       }
     }
   },
@@ -68,13 +71,14 @@ const personalMovieDB = {
   },
   writeYourGenres: function () {
     for (let i = 1; i <= 3; i++) {
-      let genre = prompt(`Ваш любимый жанр под номером ${i}`.toLowerCase());
+      let genre = prompt(`Ваш любимый жанр под номером ${i}`).toLowerCase();
 
       if (genre === '' || genre == null) {
         alert('Вы ввели некорректные данные или не ввели их вовсе');
         i--;
     } else {
         personalMovieDB.genres[i - 1] = genre;
+        personalMovieDB.genres.sort(); // Сортировка вводимых данных
     } 
     } 
     
