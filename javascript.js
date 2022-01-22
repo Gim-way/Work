@@ -1,67 +1,40 @@
 'use strict';
-// 29. Actions with messages on the page
+// 31. Events and their handlers
 
-const box = document.getElementById('box'),
-      btns = document.getElementsByTagName('button'),
-      circles = document.getElementsByClassName('circle'),
-      hearts = document.querySelectorAll('.heart'),
-      oneHeart = document.querySelector('.heart'),
-      wrapper = document.querySelector('.wrapper');
+const btns = document.querySelectorAll('button'),
+      overlay = document.querySelector('.overlay');
 
-// inLine стили всегда будут в приоритете 
-// box.style.backgroundColor = 'blue';
-// box.style.width = '500px ';
 
-box.style.cssText = 'background-color: blue; width: 500px';
+/* btn.onclick = function () {
+    alert('Clik button');
+}; 
 
-btns[1].style.borderRadius = '100%';
-btns[1].style.height =  '80px';
+btn.onclick = function () {
+    alert('Second button');
+}; */
+ // Сразу выводит второй вариант  // устаревший вариант 
 
-// Поменять во всех элементах свойства background
-// for (let i = 0; i< circles.length;i++) {
-//     circles[i].style.backgroundColor = 'red';
-// }
 
-// for (let i = 0; i<h1 hearts.length;i++) {
-//     hearts[i].style.cssText = 'background-color: black; height: 80px;';
+//Правильный вариант назначения обработчика события
+// let i = 0;
+const deletElement = (event) => {
+   console.log(event.target);
+   console.log(event.type);
+   /* i++;
+    if (i == 1){
+        btn.removeEventListener('click', deletElement);
+    } */
+};
 
-// }
+/* btn.addEventListener('click', deletElement);
+overlay.addEventListener('click', deletElement); */
 
-// Существуют специальные перебирающие методы 
-
-hearts.forEach(item => {
-    item.style.cssText = 'background-color: black; height: 80px;';
+btns.forEach(btn => {
+    btn.addEventListener('click', deletElement , {once: true});
 });
 
-
-const div = document.createElement('div'); // Элемент создан только в  JS
-const text = document.createTextNode('Тут был я');
-
-div.classList.add('black');
-
-// document.body.append(div);
-// document.body.appendChild(div); - старый формат
-
- wrapper.append(div); // встать в конец объекта    
-//wrapper.prepend(div); // вставть в начале объекта
-// hearts[1].before(div); // перед
-// hearts[0].after(div); // после
-
-//wrapper.insertBefore(div, hearts[0] ); //-вставляю перд первым элементом, устаревший формат
-
-//circles[0].remove(); удалить элемент
-//wrapper.removeChild(hearts[1]); // старый фомат удаления
-
-circles[0].style.backgroundColor = 'red';
-hearts[0].replaceWith(circles[0]); // заменить один элемент на другой 
-
-//wrapper.replaceChild(circles[0], hearts [0]); // старый формат замены
-
-// Ректактирование элемента
-
-div.innerHTML = '<h1>Hello World</h1>'   ; // 1 способ
-//div.textContent = 'Hello'; // 2 способ, работает только с текстом
- div.style.width = '300px';
-
-div.insertAdjacentHTML('afterend','<h2>Hello</h2>'); // 
-
+const link = document.querySelector('a');
+link.addEventListener('click', (event) => {
+    event.preventDefault(); // отменяем переход по ссылке
+    console.log(event.target); // выводим таргет элемента
+});
