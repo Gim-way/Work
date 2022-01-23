@@ -1,40 +1,24 @@
 'use strict';
-// 31. Events and their handlers
+// 32. DOM Navigation
+/* console.log(document.head);
+console.log(document.documentElement);
+console.log(document.body.childNodes);
+console.log(document.body.firstChild);
+console.log(document.body.firstElementChild);
+console.log(document.body.lastChild);
 
-const btns = document.querySelectorAll('button'),
-      overlay = document.querySelector('.overlay');
-
-
-/* btn.onclick = function () {
-    alert('Clik button');
-}; 
-
-btn.onclick = function () {
-    alert('Second button');
-}; */
- // Сразу выводит второй вариант  // устаревший вариант 
+console.log(document.querySelector('#current').parentNode); // получить родитель div.first
+console.log(document.querySelector('#current').parentNode.parentNode);// получаем ещё выше родителя div.wrapper
 
 
-//Правильный вариант назначения обработчика события
-// let i = 0;
-const deletElement = (event) => {
-   console.log(event.target);
-   console.log(event.type);
-   /* i++;
-    if (i == 1){
-        btn.removeEventListener('click', deletElement);
-    } */
-};
+console.log(document.querySelector('[data-current = "3"]').previousSibling);
 
-/* btn.addEventListener('click', deletElement);
-overlay.addEventListener('click', deletElement); */
-
-btns.forEach(btn => {
-    btn.addEventListener('click', deletElement , {once: true});
-});
-
-const link = document.querySelector('a');
-link.addEventListener('click', (event) => {
-    event.preventDefault(); // отменяем переход по ссылке
-    console.log(event.target); // выводим таргет элемента
-});
+console.log(document.querySelector('[data-current="3"]').nextElementSibling.outerHTML); // получаем следующий элемент 
+console.log(document.querySelector('#current').parentElement);// получаем элемеyn first
+ */
+for (let node  of document.body.childNodes){
+    if (node.nodeName == '#text') {
+        continue;
+    }
+    console.log(node);
+}
