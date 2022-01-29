@@ -1,57 +1,38 @@
-// 39. Scripts and their execution time. setTimeout and setInterval
-const btn = document.querySelector('.btn');
-let timerId2,
-    i = 0; // глобальная переменная
+// 40. Working with dates
+'use strict';
 
-// Анимация перемещения куба
+const now = new Date('2022-01-29'); // создаём новую дату и помеппщаем в переменную now
+//new Date.parse('2022-01-29'); 
 
-function myAnimation() {
-    const elem = document.querySelector('.box');
-    let pos = 0; // переменная позиции откуда будет всё стартовать и изменяться
+/* Методы set-оры */
+console.log(now.setHours(18,40)); // устанавливаем дату. Второй аргумент это минуты
+console.log(now.setHours(40)); // часы перекинуться на новую дату
+console.log(now);
 
-    const id = setInterval(frame,10);
-    function frame() {
-        if (pos === 300){
-        /* конечное значение, если будет равно 300, то останавливаем анимацию */
-            clearInterval(id);
-        }else{
-        /* Если аниамация не закончилась */
-            pos++; // начальную позицию увелициваю на еденицу
-            elem.style.top = pos+'px';
-            elem.style.left = pos+'px';
-        }
-    }
+// Методы
+//getFullYear - показывает только год
+//getMonth - получаем месяц, отчитываем с 0 
+//getDate - получаем число
+//getHours - получить часы
+// и т.д
+console.log(now.getFullYear());
+console.log(now.getMonth());
+console.log(now.getDate());
+console.log(now.getHours());
+
+console.log(now.getDay());
+// getDay - получить номер дня недели, ВС будет 0 день
+console.log(now.getUTCHours()); // время по UTC
+
+console.log(now.getTimezoneOffset()); // получать разницу между часовым поесом и UTC (разница в минутах)
+console.log(now.getTime()); // время в милисикундах которое прошло
+
+let start = new Date(); // Начало работы
+
+for (let i = 0; i < 100000; i++){
+    let some = i**3;
 }
 
+let end = new Date(); // Конец работы 
 
- btn.addEventListener('click', (myAnimation));
-
-/*  const timerId = setTimeout( function (text){ 
-     // конструкция принимает ту функцию которая будет запускаться через определенное время
-     console.log(text);
- }, 2000,'Hello'); // мс через 2 скунды получаем 'Hello'
-// трейти аргумент перейдет в функцию  */
-
-
-
-/* btn.addEventListener('click', ()=>{
-//const timerId2 = setTimeout( logger, 3000);
- timerId2 = setInterval( logger, 500); // будет выполняться каждые три секунды
-});
-
-
-function logger () {
-    if (i===3){ // когда выполниться функция 3 раза, сработает
-        // Сбросить setTimeout 
-        clearInterval(timerId2);
-    }
-    console.log('text');
-    i++;
-} */
-
-// Рекурсивыный вызов setTimeout
-
-/*  let id = setTimeout(function log(){
-    console.log('Hello');
-    id = setTimeout(log,500);
- },500); */
+alert(`Цикл отрабол за ${end-start} миллисикунд`);
