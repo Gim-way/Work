@@ -1,38 +1,28 @@
-// 40. Working with dates
-'use strict';
-
-const now = new Date('2022-01-29'); // создаём новую дату и помеппщаем в переменную now
-//new Date.parse('2022-01-29'); 
-
-/* Методы set-оры */
-console.log(now.setHours(18,40)); // устанавливаем дату. Второй аргумент это минуты
-console.log(now.setHours(40)); // часы перекинуться на новую дату
-console.log(now);
-
-// Методы
-//getFullYear - показывает только год
-//getMonth - получаем месяц, отчитываем с 0 
-//getDate - получаем число
-//getHours - получить часы
-// и т.д
-console.log(now.getFullYear());
-console.log(now.getMonth());
-console.log(now.getDate());
-console.log(now.getHours());
-
-console.log(now.getDay());
-// getDay - получить номер дня недели, ВС будет 0 день
-console.log(now.getUTCHours()); // время по UTC
-
-console.log(now.getTimezoneOffset()); // получать разницу между часовым поесом и UTC (разница в минутах)
-console.log(now.getTime()); // время в милисикундах которое прошло
-
-let start = new Date(); // Начало работы
-
-for (let i = 0; i < 100000; i++){
-    let some = i**3;
+//45. Constructor Functions
+/* Функция посвоей сути явлается - объектом, можно записать какие-то методы и свойства */
+/* Функция будет принимать два аргумнта и уникальный идентификатор */
+function User(name, id){
+    this.name = name; 
+    this.id = id;
+    this.human = true;
+    /* Можем записать методы */
+    this.hello = function () {
+        console.log(`Hello ${this.name}`);
+    };
 }
 
-let end = new Date(); // Конец работы 
+User.prototype.exit = function () {
+    console.log(`Пользователь ${this.name} ушёл`);
+};
+/* Наша функция стала конструктором, с её помошью можем создавть новых пользователей */
+/* Прототип, от которого можем создавть новых польхователей */
+const ivan = new User('Ivan', 28);
+const alex = new User('Alex', 20);
 
-alert(`Цикл отрабол за ${end-start} миллисикунд`);
+ivan.exit();
+
+ivan.hello();
+alex.hello();
+
+console.log(ivan);
+console.log(alex);
