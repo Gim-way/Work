@@ -1,22 +1,30 @@
 'use strict';
-// 49. Rest operator and default parameters (ES6)
+// 51. JSON
 
-/* Rest оператор записывается вконце аргументов как три точки ... */
-/* Rest оператор собирает всё, что осталось и формирует массив */
-const log = function(a, b, ...rest){
-    console.log(a,b,rest);
+const persone = {
+    name:'Alex',
+    tel:'+7234234234',
+    parents:{
+        mom: 'Olga',
+        dad: 'Mike'
+    }
 };
-log('basic','rest','operator','usage'); // 'operator' и 'usage' поместились в массив
 
-var dir = function(a, b, c) {
-    console.log(a, b, c);
-  };
-  
-  dir(...['Spread', 'Rest', 'Operator']); // Spread Rest Operator
+console.log(JSON.stringify(persone));
+/* Получим {"name":"Alex","tel":"+7234234234"}
+и можем отправитьна сервер именно вот в таком формате */
 
-  function calcOrDouble(number,basis = 2){
-      /* Параметр по умолчанию basis = 2 */
-      console.log(number * basis);
-  }
-  calcOrDouble(3);
+/* С сервера приходит JSON и нужно привратить в обчный объект */
 
+/* JSON.parse */
+console.log(JSON.parse(JSON.stringify(persone)));
+/* Получаем обратно обычный объект - { name: 'Alex', tel: '+7234234234' } */
+
+/* Глубокая копия объекта */
+
+const clone = JSON.parse(JSON.stringify(persone));
+/* JSON.stringify(persone) - превратит его в JSON, потом обратоно превратит его в объект и поместит его в переменную clone*/
+/* Будет слоздан глубоккий clone */
+clone.parents.dad = 'Nike';
+console.log(persone);
+console.log(clone);
