@@ -1,38 +1,22 @@
 'use strict';
-//47. Classes (ES6)
-/* Классы - это красивая оберта функции конструкторов */
+// 49. Rest operator and default parameters (ES6)
 
-/* Синтаксис классов */
+/* Rest оператор записывается вконце аргументов как три точки ... */
+/* Rest оператор собирает всё, что осталось и формирует массив */
+const log = function(a, b, ...rest){
+    console.log(a,b,rest);
+};
+log('basic','rest','operator','usage'); // 'operator' и 'usage' поместились в массив
 
-class Rectangle {
-    constructor(height,width){
-        /* Свойства */
-        this.height = height;
-        this.width = width;
-    }
+var dir = function(a, b, c) {
+    console.log(a, b, c);
+  };
+  
+  dir(...['Spread', 'Rest', 'Operator']); // Spread Rest Operator
 
-    calcArea(){
-        return this.height * this.width;
-    }
-}
-/* Наследует свойства и методы extends Rectangle */
-class ColorRectangleWithText extends Rectangle{
-    constructor(height,width,text,bgColor){
-        /* Вызвает супер конструктор родителя */
-        /* Super должна быть всегда на первом месте в конструкторе */
-        super(height,width);
-        this.text = text;
-        this.bgColor = bgColor;
-    }
-    showMyProps(){
-        console.log(`Текст: ${this.text}, цвет: ${this.bgColor}`);
-    }
-}
+  function calcOrDouble(number,basis = 2){
+      /* Параметр по умолчанию basis = 2 */
+      console.log(number * basis);
+  }
+  calcOrDouble(3);
 
-const div = new ColorRectangleWithText(25,10,'Hello World','red');
-div.showMyProps();
-console.log(div.calcArea());
-// const square = new Rectangle(10,10);
-// const long = new Rectangle(20,100);
-// console.log(long.calcArea());
-// console.log(square.calcArea());
